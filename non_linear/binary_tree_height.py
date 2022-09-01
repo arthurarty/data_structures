@@ -52,18 +52,13 @@ def print_tree(root: Node):
     if root.right:
         print_tree(root.right)
 
-# Enter your code here. Read input from STDIN. Print output to STDOUT
-'''
-class Node:
-      def __init__(self,info): 
-          self.info = info  
-          self.left = None  
-          self.right = None 
-           
 
-       // this is a node of the tree , which contains info as data, left , right
-'''
 def height(root):
+    """
+    Depth first approach to finding the height.
+    :param root:
+    :return:
+    """
     if root is None:
         return -1
     left_side = height(root.left)
