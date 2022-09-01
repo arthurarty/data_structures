@@ -1,25 +1,24 @@
-def bsearch(input_list, val):
+from typing import Optional, List
 
-    list_size = len(input_list) - 1
+def binary_search(input_list: List[int], val: int) -> Optional[int]:
 
-    idx0 = 0
-    idxn = list_size
+    low = 0
+    high = len(input_list) - 1
 
     """find the middle most value"""
-    while idx0 <= idxn:
-        midval = (idx0 + idxn)//2
+    while low <= high:
+        mid_val = (low + high)//2
 
-        if input_list[midval] == val:
-            return midval
+        if input_list[mid_val] == val:
+            return mid_val
 
         """compare the value with the middle most value"""
-        if val > input_list[midval]:
-            idx0 = midval + 1
+        if val > input_list[mid_val]:
+            low = mid_val + 1
         else:
-            idxn = midval - 1
-
-    if idx0 > idxn:
-        return None
+            high = mid_val - 1
+    return None
 
 the_list = [2, 7, 19, 34, 53, 72]
-print(bsearch(the_list, 72))
+print(binary_search(the_list, 72))
+print(binary_search(the_list, 78))
