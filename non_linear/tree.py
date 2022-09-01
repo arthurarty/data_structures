@@ -1,3 +1,6 @@
+"""
+Tree structure how to add to a tree and how to print a tree.
+"""
 class Node:
 
     def __init__(self, data):

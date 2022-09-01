@@ -12,8 +12,8 @@ class BinarySearchTree:
     def __init__(self): 
         self.root = None
 
-    def create(self, val):  
-        if self.root == None:
+    def create(self, val):
+        if self.root is None:
             self.root = Node(val)
         else:
             current = self.root
@@ -34,6 +34,15 @@ class BinarySearchTree:
                 else:
                     break
 
+def print_tree(root: Node):
+    if root is None:
+        return
+    if root.left:
+        print_tree(root.left)
+    print(root.info)
+    if root.right:
+        print_tree(root.right)
+
 # Enter your code here. Read input from STDIN. Print output to STDOUT
 '''
 class Node:
@@ -53,12 +62,16 @@ def height(root):
     return max(left_side, right_side) + 1
 
 
-tree = BinarySearchTree()
-t = int(input())
+if __name__ == "__main__":
+    tree = BinarySearchTree()
+    # t = int(input())
+    #
+    # arr = list(map(int, input().split()))
+    # for i in range(t):
+    #     tree.create(arr[i])
 
-arr = list(map(int, input().split()))
-
-for i in range(t):
-    tree.create(arr[i])
-
-print(height(tree.root))
+    arr = [3, 5, 2, 1, 4, 6, 7]
+    for ii in arr:
+        tree.create(ii)
+    # print(height(tree.root))
+    print_tree(tree.root)
