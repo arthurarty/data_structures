@@ -1,3 +1,5 @@
+from typing import List
+
 class Node:
     def __init__(self, info): 
         self.info = info  
@@ -35,6 +37,13 @@ class BinarySearchTree:
                     break
 
 def print_tree(root: Node):
+    """
+    This is a Depth First Traversal using inorder.
+    i.e <left> <root> <right>
+    Where root is the current node.
+    :param root:
+    :return: None
+    """
     if root is None:
         return
     if root.left:
@@ -62,6 +71,29 @@ def height(root):
     return max(left_side, right_side) + 1
 
 
+def level_order(root: Node) -> str:
+    """
+    Breadth First approach to visiting all nodes in a tree.
+    :param root:
+    :return: None
+    """
+    if root is None:
+        return ""
+    queue: List[Node] = [root]
+    output_str = ''
+    while len(queue) > 0:
+        output_str += f"{queue[0].info} "
+        current_node = queue.pop(0)
+        if current_node.left:
+            queue.append(current_node.left)
+        if current_node.right:
+            queue.append(current_node.right)
+    return output_str
+
+def print_level_order(root: Node):
+    print(level_order(root))
+
+
 if __name__ == "__main__":
     tree = BinarySearchTree()
     # t = int(input())
@@ -74,4 +106,5 @@ if __name__ == "__main__":
     for ii in arr:
         tree.create(ii)
     # print(height(tree.root))
-    print_tree(tree.root)
+    # print_tree(tree.root)
+    print_level_order(tree.root)
