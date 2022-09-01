@@ -1,5 +1,6 @@
 from typing import Optional, List
 
+
 def binary_search(input_list: List[int], val: int) -> Optional[int]:
     input_list.sort()  # we cannot assume the list will be sorted.
     low = 0
@@ -18,6 +19,7 @@ def binary_search(input_list: List[int], val: int) -> Optional[int]:
         else:
             high = mid_val - 1
     return None
+
 
 the_list = [2, 7, 19, 34, 53, 72]
 print(binary_search(the_list, 72))
