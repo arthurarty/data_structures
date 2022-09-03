@@ -4,7 +4,11 @@ class Node:
         self.nextval = None
 
 
-class SlinkedList:
+class SinglylinkedList:
+    """
+    Each node only has a reference to the next node.
+    Doubly linked list would be one each node also knows about the previous node.
+    """
     def __init__(self):
         self.headval = None
 
@@ -14,7 +18,8 @@ class SlinkedList:
             print(printval.dataval)
             printval = printval.nextval
 
-list1 = SlinkedList()
+
+list1 = SinglylinkedList()
 list1.headval = Node("Mon")
 e2 = Node('Tue')
 e3 = Node('Wed')
