@@ -3,11 +3,10 @@ class Node:
     An object for storing a single node of a linked list.
     Models two attributes - data and the link to the next node in the list.
     """
-    data = None
-    next_node = None
 
-    def __init__(self, data):
+    def __init__(self, data, next_node=None):
         self.data = data
+        self.next_node = next_node
 
     def __repr__(self):
         return f'<Node: {self.data}>'
@@ -17,11 +16,12 @@ class LinkedList:
     """
     Singly linked list.
     """
+
     def __int__(self):
         self.head = None
 
     def is_empty(self):
-        return True if self.head is None else False
+        return self.head is None
 
     def size(self) -> int:
         """
@@ -35,3 +35,13 @@ class LinkedList:
             count += 1
             current = current.next_node
         return count
+
+
+if __name__ == '__main__':
+    N1 = Node(5)
+    N3 = Node(65)
+    N2 = Node(89, N3)
+    N1.next_node = N2
+    ll = LinkedList()
+    ll.head = N1
+    print(ll.size())
