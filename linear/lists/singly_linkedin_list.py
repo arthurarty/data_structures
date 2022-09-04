@@ -123,6 +123,20 @@ class LinkedList:
         prev_node.next_node = node_to_delete.next_node
         return True
 
+    def remove(self, search_key):
+        current = self.head
+        previous = None
+
+        while current:
+            if current.data == search_key:
+                if previous:
+                    previous.next_node = current.next_node
+                else:
+                    self.head = current.next_node
+                break
+            previous = current
+            current = current.next_node
+
     def __repr__(self) -> str:
         """
         Return a string representation of the list.
@@ -165,4 +179,6 @@ if __name__ == '__main__':
     ll.insert(88, 3)
     print(ll)
     ll.remove_by_index(2)
+    print(ll)
+    ll.remove(88)
     print(ll)
