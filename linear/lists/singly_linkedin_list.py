@@ -1,3 +1,6 @@
+from typing import Optional
+
+
 class Node:
     """
     An object for storing a single node of a linked list.
@@ -48,6 +51,24 @@ class LinkedList:
         new_node.next_node = self.head
         self.head = new_node
 
+    def search(self, search_key) -> Optional[Node]:
+        """
+        Search for the first node containing data that matches the key.
+        Linked list can have the value multiple times.
+
+        Takes 0(n) time.
+        :param search_key:
+        :return:
+        """
+        current = self.head
+
+        while current:
+            if current.data == search_key:
+                return current
+            else:
+                current = current.next_node
+        return None
+
     def __repr__(self) -> str:
         """
         Return a string representation of the list.
@@ -83,3 +104,5 @@ if __name__ == '__main__':
     print(ll.head)
     print(ll.head.next_node)
     print(ll)
+    print(ll.search(65))
+    print(ll.search(4524))
