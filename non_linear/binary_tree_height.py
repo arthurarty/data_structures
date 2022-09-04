@@ -85,6 +85,7 @@ def level_order(root: Node) -> str:
             queue.append(current_node.right)
     return output_str
 
+
 def print_level_order(root: Node):
     print(level_order(root))
 
