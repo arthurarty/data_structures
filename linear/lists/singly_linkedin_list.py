@@ -56,7 +56,7 @@ class LinkedList:
         Search for the first node containing data that matches the key.
         Linked list can have the value multiple times.
 
-        Takes 0(n) time.
+        Takes 0(n) time a.k.a linear time.
         :param search_key:
         :return:
         """
@@ -68,6 +68,38 @@ class LinkedList:
             else:
                 current = current.next_node
         return None
+
+    def insert(self, data: int, index: int):
+        """
+        Inserting into the linked list is 0(1) however finding the position to insert
+        at is 0(n) since we go through the list to find the node at the index
+        :param data:
+        :param index:
+        :return:
+        """
+        if index == 0:
+            self.add(data)
+
+        if index > 0:
+            new = Node(data)
+
+            position = index
+            current = self.head
+
+            while position > 1:
+                """
+                We are counting how many steps we are moving from head.
+                i.e Index is how many steps from head.
+                When we reach position 1, that is where we want to insert.
+                """
+                current = current.next_node
+                position -= 1
+
+            prev_node = current
+            next_node = current.next_node
+
+            prev_node.next_node = new
+            new.next_node = next_node.next_node
 
     def __repr__(self) -> str:
         """
@@ -101,8 +133,12 @@ if __name__ == '__main__':
     print(ll.size())
     print(ll.head)
     ll.add(781)
+    ll.add(9099)
+    ll.add(532)
     print(ll.head)
     print(ll.head.next_node)
     print(ll)
     print(ll.search(65))
     print(ll.search(4524))
+    ll.insert(88, 3)
+    print(ll)
