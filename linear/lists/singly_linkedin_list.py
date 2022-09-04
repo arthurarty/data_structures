@@ -16,6 +16,7 @@ class LinkedList:
     """
     Singly linked list.
     """
+    head = None
 
     def __int__(self):
         self.head = None
@@ -36,6 +37,17 @@ class LinkedList:
             current = current.next_node
         return count
 
+    def add(self, data):
+        """
+        Adds a new node containing data at the head of the linked list.
+        Takes 0(1) time.
+        :param data:
+        :return:
+        """
+        new_node = Node(data)
+        new_node.next_node = self.head
+        self.head = new_node
+
 
 if __name__ == '__main__':
     N1 = Node(5)
@@ -45,3 +57,7 @@ if __name__ == '__main__':
     ll = LinkedList()
     ll.head = N1
     print(ll.size())
+    print(ll.head)
+    ll.add(781)
+    print(ll.head)
+    print(ll.head.next_node)
