@@ -79,6 +79,7 @@ class LinkedList:
         """
         if index == 0:
             self.add(data)
+            return
 
         if index > 0:
             new = Node(data)
@@ -100,6 +101,27 @@ class LinkedList:
 
             prev_node.next_node = new
             new.next_node = next_node.next_node
+
+    def remove_by_index(self, index: int) -> bool:
+        if index == 0:
+            current = self.head
+            next_node = current.next_node
+            self.head = next_node
+            return True
+        elif index < 0:
+            """
+            Element is not in linked list. indexs are normally >= 0
+            """
+            return False
+
+        current_node = self.head
+        while index > 1:
+            current_node = current_node.next_node
+            index = -1
+        prev_node = current_node
+        node_to_delete = current_node.next_node
+        prev_node.next_node = node_to_delete.next_node
+        return True
 
     def __repr__(self) -> str:
         """
@@ -141,4 +163,6 @@ if __name__ == '__main__':
     print(ll.search(65))
     print(ll.search(4524))
     ll.insert(88, 3)
+    print(ll)
+    ll.remove_by_index(2)
     print(ll)
