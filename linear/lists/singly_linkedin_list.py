@@ -124,6 +124,11 @@ class LinkedList:
         return True
 
     def remove(self, search_key):
+        """
+        Removes the Node containing the data that matches the search_key,
+        :param search_key:
+        :return:
+        """
         current = self.head
         previous = None
 
@@ -136,6 +141,19 @@ class LinkedList:
                 break
             previous = current
             current = current.next_node
+
+    def read_at_index(self, index: int):
+        if index == 0:
+            return self.head.data
+        current = self.head
+        while index > 1:
+            current = current.next_node
+            index -= 1
+            if not current.next_node:
+                return None
+        if current.next_node:
+            return current.next_node
+        return None
 
     def __repr__(self) -> str:
         """
@@ -168,17 +186,19 @@ if __name__ == '__main__':
     ll.head = N1
     print(ll.size())
     print(ll.head)
-    ll.add(781)
-    ll.add(9099)
+    # ll.add(781)
+    # ll.add(9099)
     ll.add(532)
-    print(ll.head)
-    print(ll.head.next_node)
+    # print(ll.head)
     print(ll)
-    print(ll.search(65))
-    print(ll.search(4524))
-    ll.insert(88, 3)
-    print(ll)
-    ll.remove_by_index(2)
-    print(ll)
-    ll.remove(88)
-    print(ll)
+    print(ll.read_at_index(3))
+    # print(ll.head.next_node)
+    # print(ll)
+    # print(ll.search(65))
+    # print(ll.search(4524))
+    # ll.insert(88, 3)
+    # print(ll)
+    # ll.remove_by_index(2)
+    # print(ll)
+    # ll.remove(88)
+    # print(ll)
