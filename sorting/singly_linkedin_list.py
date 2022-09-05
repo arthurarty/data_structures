@@ -190,17 +190,19 @@ class LinkedList:
 
 
 if __name__ == '__main__':
-    N1 = Node(5)
-    N3 = Node(65)
-    N2 = Node(89, N3)
-    N1.next_node = N2
+    # N1 = Node(5)
+    # N3 = Node(65)
+    # N2 = Node(89, N3)
+    # N1.next_node = N2
     ll = LinkedList()
-    ll.head = N1
-    print(ll.size())
-    print(ll.head)
+    # ll.head = N1
+    # print(ll.size())
+    # print(ll.head)
     # ll.add(781)
     # ll.add(9099)
     ll.add(532)
+    ll.add(831)
+    ll.add(51)
     # print(ll.head)
     print(ll)
     print(ll.read_at_index(3))
