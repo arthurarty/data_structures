@@ -2,6 +2,18 @@ from typing import List
 
 
 def merge_sort(values):
+    """
+    Sorts a list in ascending order.
+    returns a new list.
+
+    Divide: Find the midpoint of the list and divide into sublists.
+    Conquer: Recursively sort the sublists created in previous step.
+    Combine: merge the sorted sublists created in previous step.
+
+    Takes 0(n log n) time.
+    :param values:
+    :return:
+    """
     # Our base case is the same as with Quicksort. If the list has zero or one
     # values, there's nothing to sort, so we return it as-is.
     if len(values) <= 1:
@@ -15,6 +27,11 @@ def merge_sort(values):
     # Python currently, we can take advantage of a special Python operator that
     # divides and rounds the result down: the floor division operator. It
     # consists of a double slash.
+    """
+    Start of the split step:
+    since we are sorting half of the list at a time.
+    0(log N).
+    """
     middle_index = len(values) // 2
     # Now we'll use the Python slice syntax to get the left half of the list.
     # We'll pass that list to a recursive call to the merge_sort function.
@@ -22,6 +39,12 @@ def merge_sort(values):
     # We'll also use slice syntax to get the right half of the list, and pass
     # that to merge_sort as well.
     right_values = merge_sort(values[middle_index:])
+
+    """
+    Start of merge step:
+    Merges two lists, sorting them in the process.
+    Runs in overall 0(n) time. (liner time).
+    """
     # Now we need to merge the two halves together, and sort them as we do it.
     # We'll create a list to hold the sorted values.
     sorted_values = []
