@@ -45,9 +45,16 @@ class Graph:
             # is greater than new distance and the vertex is not in the shortest_path_tree
             for y in range(self.no_of_vertices):
                 if self.graph[x][y] <= 0:
+                    # if value is 0 it mostly a placeholder.
+                    # if value is 0, those vertexes do not have an edge connecting them.
                     continue
-                if spt_set[y] is False and dist[y] > dist[x] + self.graph[x][y]:
-                    dist[y] = dist[x] + self.graph[x][y]
+                if spt_set[y] is True:
+                    # we already visited this vertex.
+                    continue
+                proposed_shortest_distance = dist[x] + self.graph[x][y]
+                if proposed_shortest_distance < dist[y]:
+                    # i.e. new route is shorted than the last route.
+                    dist[y] = proposed_shortest_distance
         self.print_solution(dist)
 
 
