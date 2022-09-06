@@ -8,24 +8,17 @@ class Graph:
         self.graph_dict[vertex_2] = self.graph_dict[vertex_2] + [vertex_1]
 
     def find_all_distances(self, start_value: int):
-        visited_nodes = set()
+        visited_nodes = {}
         queue = [(start_value, 0)]
-        dist = []
-        track_level = {}
+        dist = [-1] * self.no_of_vertices
         while queue:
             current_value, level = queue.pop(0)
-            if current_value not in visited_nodes:
-                visited_nodes.add(current_value)
-                track_level[current_value] = level
+            if current_value not in visited_nodes.keys():
+                visited_nodes[current_value] = level
+                dist[current_value] = visited_nodes[current_value] * 6
                 for next_vertex in self.graph_dict[current_value]:
                     queue.append((next_vertex, level+1))
-        for ii in range(self.no_of_vertices):
-            if ii == start_value:
-                continue
-            if track_level.get(ii) is None:
-                dist.append(-1)
-            else:
-                dist.append((track_level[ii]) * 6)
+        dist.remove(0)
         return " ".join(map(str, dist))
 
 
