@@ -2,6 +2,12 @@ from typing import Optional, List
 
 
 def binary_search(input_list: List[int], val: int) -> Optional[int]:
+    """
+    Run time of binary search is 0(log N)
+    :param input_list:
+    :param val:
+    :return:
+    """
     input_list.sort()  # we cannot assume the list will be sorted.
     low = 0
     high = len(input_list) - 1
