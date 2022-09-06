@@ -1,3 +1,6 @@
+import collections
+
+
 class Graph:
     def __init__(self, no_of_vertices=None):
         self.no_of_vertices = no_of_vertices
@@ -9,10 +12,13 @@ class Graph:
 
     def find_all_distances(self, start_value: int):
         visited_nodes = {}
-        queue = [(start_value, 0)]
+        queue = collections.deque([(start_value, 0)])
+        """
+        Using a deque is faster than trying to use a list.
+        """
         dist = [-1] * self.no_of_vertices
         while queue:
-            current_value, level = queue.pop(0)
+            current_value, level = queue.popleft()
             if current_value not in visited_nodes.keys():
                 visited_nodes[current_value] = level
                 dist[current_value] = visited_nodes[current_value] * 6
