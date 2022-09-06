@@ -6,33 +6,33 @@ from typing import List
 @dataclass
 class Graph:
     no_of_vertices: int
-    graph: List[int] = lambda x: list()
+    graph: List[List[int]] = lambda x: [[]]
 
     def print_solution(self, dist):
         print("Vertex \t Distance from source")
         for node in range(self.no_of_vertices):
             print(node, "\t", dist[node])
 
-    def min_distance(self, dist, spt_set):
+    def min_distance(self, dist: List[int], spt_set: List[bool]):
         """
         A utility function to find the vertex with minimum distance value,
         from the set of vertices not yet included in the shortest path tree
-        :param dist:
-        :param spt_set:
+        :param dist: List[int] where int is max_possible int in python
+        :param spt_set: List[bool]
         :return:
         """
         min_value = sys.maxsize
         min_index = None
-        for u in range(self.no_of_vertices):
-            if dist[u] < min_value and spt_set[u] is False:
-                min_value = dist[u]
-                min_index = u
+        for ii in range(self.no_of_vertices):
+            if dist[ii] < min_value and spt_set[ii] is False:
+                min_value = dist[ii]
+                min_index = ii
         return min_index
 
     def dijkstra(self, src):
         dist = [sys.maxsize] * self.no_of_vertices
         dist[src] = 0
-        spt_set = [False] * self.no_of_vertices
+        spt_set = [False] * self.no_of_vertices  # tracks whether we have set the shortest path
 
         for ii in range(self.no_of_vertices):
             # pick the min distance vertex from the set of vertices not yet processed
@@ -44,7 +44,9 @@ class Graph:
             # of the picked vertex only if the current distance
             # is greater than new distance and the vertex is not in the shortest_path_tree
             for y in range(self.no_of_vertices):
-                if self.graph[x][y] > 0 and spt_set[y] is False and dist[y] > dist[x] + self.graph[x][y]:
+                if self.graph[x][y] <= 0:
+                    continue
+                if spt_set[y] is False and dist[y] > dist[x] + self.graph[x][y]:
                     dist[y] = dist[x] + self.graph[x][y]
         self.print_solution(dist)
 
