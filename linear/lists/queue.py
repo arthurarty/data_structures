@@ -1,3 +1,9 @@
+"""
+This implementation is slow because it used a list to store the values.
+Lists/Arrays have a runtime of 0(n) Linear time when inserting values at the start.
+A better implementation would have been to use a linked_list.
+"""
+
 class Queue:
 
     def __init__(self):

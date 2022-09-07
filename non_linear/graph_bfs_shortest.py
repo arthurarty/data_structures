@@ -15,6 +15,8 @@ class Graph:
         queue = collections.deque([(start_value, 0)])
         """
         Using a deque is faster than trying to use a list.
+        Reason being, collections.deque is implemented as a doubly linked list.
+        linked list is better as popping and appending at both ends.
         """
         dist = [-1] * self.no_of_vertices
         while queue:
@@ -24,7 +26,7 @@ class Graph:
                 dist[current_value] = visited_nodes[current_value] * 6
                 for next_vertex in self.graph_dict[current_value]:
                     queue.append((next_vertex, level+1))
-        dist.remove(0)
+        dist.remove(0)  # we expect just one zero which represents the start_value.
         return " ".join(map(str, dist))
 
 

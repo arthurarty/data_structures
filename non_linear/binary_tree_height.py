@@ -10,6 +10,7 @@ class Node:
     def __str__(self):
         return str(self.info) 
 
+
 class BinarySearchTree:
     def __init__(self): 
         self.root = None
