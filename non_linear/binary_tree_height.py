@@ -37,6 +37,7 @@ class BinarySearchTree:
                 else:
                     break
 
+
 def print_tree(root: Node):
     """
     This is a Depth First Traversal using inorder.

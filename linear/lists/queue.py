@@ -4,6 +4,7 @@ Lists/Arrays have a runtime of 0(n) Linear time when inserting values at the sta
 A better implementation would have been to use a linked_list.
 """
 
+
 class Queue:
 
     def __init__(self):
@@ -24,6 +25,7 @@ class Queue:
         if len(self.queue) > 0:
             return self.queue.pop()
         return ("No elements in Queue!")
+
 
 the_queue = Queue()
 the_queue.addtoq("John")

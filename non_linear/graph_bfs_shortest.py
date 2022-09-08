@@ -16,9 +16,9 @@ class Graph:
         """
         Using a deque is faster than trying to use a list.
         Reason being, collections.deque is implemented as a doubly linked list.
-        linked list is better as popping and appending at both ends.
+        linked list is better at popping and appending at both ends.
         """
-        dist = [-1] * self.no_of_vertices
+        dist = [-1] * self.no_of_vertices  # make default list = [-1, -1, -1, ] len(dist) = no_of_vertices
         while queue:
             current_value, level = queue.popleft()
             if current_value not in visited_nodes.keys():
