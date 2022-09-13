@@ -33,7 +33,6 @@ class BinaryTree:
     """
     def __init__(self, root=None):
         self.root = root if root else Node(1, 1)
-        self.max_levels = 0
 
     def insert(self, value, level):
         # works on a binary search tree
@@ -65,8 +64,6 @@ class BinaryTree:
                 if right_value > 0:
                     node_of_interest.right = Node(node_of_interest.level + 1, right_value)
                     queue.append(node_of_interest.right)
-                if right_value > 0 or left_value > 0:
-                    self.max_levels += 1
         return 1
 
     def swap(self, level_to_swap):
@@ -94,16 +91,16 @@ def print_tree(root: Node):
 
 
 def swap_nodes(indexes, queries):
+    output = []
     binary_tree = BinaryTree(Node(1, 1))
     binary_tree.custom_insert(indexes)
-    print(binary_tree.root.print_tree())
-    # print(print_tree(binary_tree.root))
-    # for query in queries:
-    #     binary_tree.swap(query)
-    # print('after swap')
-    # binary_tree.root.print_tree()
+    for query in queries:
+        binary_tree.swap(query)
+        output.append(binary_tree.root.print_tree())
     return 0
 
 
 if __name__ == "__main__":
-    swap_nodes([[2, 3], [-1, 4], [-1, 5], [-1, -1], [-1, -1]], [2])
+    # above solution is running into a runtime error when given larger data sets
+    # swap_nodes([[2, 3], [-1, 4], [-1, 5], [-1, -1], [-1, -1]], [2])
+    swap_nodes([[2, 3]], [1])
