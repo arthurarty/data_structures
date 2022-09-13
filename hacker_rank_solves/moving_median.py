@@ -52,4 +52,5 @@ def running_median(input_list: List[int]) -> List[float]:
 
 if __name__ == "__main__":
     ans = running_median([12, 4, 5, 3, 8, 7])
+    assert ans == [12.0, 8.0, 5.0, 4.5, 5.0, 6.0]
     print(ans)
