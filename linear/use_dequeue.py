@@ -9,5 +9,5 @@ ticket_queue.append("John")
 ticket_queue.append("Linda")
 print(ticket_queue)
 
-ticket_queue.popleft("Jane")
+ticket_queue.popleft()
 

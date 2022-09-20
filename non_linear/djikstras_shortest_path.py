@@ -32,13 +32,13 @@ class Graph:
     def dijkstra(self, src):
         dist = [sys.maxsize] * self.no_of_vertices
         dist[src] = 0
-        spt_set = [False] * self.no_of_vertices  # tracks whether we have set the shortest path
+        visited = [False] * self.no_of_vertices  # tracks whether we have set the shortest path
 
         for ii in range(self.no_of_vertices):
             # pick the min distance vertex from the set of vertices not yet processed
             # x is always equal to src in first iteration
-            x = self.min_distance(dist, spt_set)
-            spt_set[x] = True
+            x = self.min_distance(dist, visited)
+            visited[x] = True
 
             # update dist value of the adjacent vertices
             # of the picked vertex only if the current distance
@@ -48,7 +48,7 @@ class Graph:
                     # if value is 0 it mostly a placeholder.
                     # if value is 0, those vertexes do not have an edge connecting them.
                     continue
-                if spt_set[y] is True:
+                if visited[y] is True:
                     # we already visited this vertex.
                     continue
                 proposed_shortest_distance = dist[x] + self.graph[x][y]
