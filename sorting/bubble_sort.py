@@ -14,4 +14,15 @@ def bubble_sort(input_list):
     return input_list
 
 
-print(bubble_sort([19, 2, 31, 45, 6, 11, 121, 27]))
+print(bubble_sort([19, 2, 31, 45, 6, 11, 121, 27, 3]))
+print(bubble_sort([19, 2, 31, 45, 6, 11, 121, 27, 8, 100, 43, 91]))
+
+
+def custom_bubble_sort(input_list):
+    # input_list = [5, 70, 1, 6, 19, 100, 2]
+    for _ in range(len(input_list)):
+        for index in range(len(input_list) - 1):
+            if input_list[index] > input_list[index+1]:
+                input_list[index], input_list[index+1] = input_list[index+1], input_list[index]
+    return input_list
+print(custom_bubble_sort([5, 70, 1, 6, 19, 100, 2]))
