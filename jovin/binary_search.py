@@ -18,6 +18,8 @@ def locate_card(cards: List[int], desired_card: int) -> int:
     # when decide to pick a half of the list, we adjust the low and the high.
     low, high = 0, len(cards) - 1
     while low <= high:
+        # if low == high, we have finished the entire list
+        # if list is empty, 0 is greater than -1 so condition exists
         midpoint = (low + high) // 2
         if desired_card == cards[midpoint]:
             return midpoint
