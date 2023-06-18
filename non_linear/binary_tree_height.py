@@ -58,6 +58,7 @@ def print_tree(root: Node):
 def height(root):
     """
     Depth first approach to finding the height.
+    Height of a binary tree is determined by the longest branch.
     :param root:
     :return:
     """
@@ -71,6 +72,7 @@ def height(root):
 def level_order(root: Node) -> str:
     """
     Breadth First approach to visiting all nodes in a tree.
+    Makes use of stack. Since a stack has the last item in being the first out.
     :param root:
     :return: None
     """
